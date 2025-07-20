@@ -1,20 +1,28 @@
 <?= $this->extend('admin/layout') ?>
 <?= $this->section('content') ?>
-<h1>Add Product</h1>
-<form action="/admin/products/store" method="post">
-    <?= csrf_field() ?>
-    <div class="mb-3">
-        <label class="form-label">Name</label>
-        <input type="text" class="form-control" name="name" required>
+
+<h1 class="h3 mb-4 text-gray-800">Add Product</h1>
+
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <form action="/admin/products/store" method="post">
+            <?= csrf_field() ?>
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" name="name" required>
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea class="form-control" name="description" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label>Price</label>
+                <input type="number" class="form-control" name="price" step="0.01" required>
+            </div>
+            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
+            <a href="/admin/products" class="btn btn-secondary">Cancel</a>
+        </form>
     </div>
-    <div class="mb-3">
-        <label class="form-label">Description</label>
-        <textarea class="form-control" name="description" rows="4" required></textarea>
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Price</label>
-        <input type="number" class="form-control" name="price" step="0.01" required>
-    </div>
-    <button type="submit" class="btn btn-primary">Save</button>
-</form>
+</div>
+
 <?= $this->endSection() ?>

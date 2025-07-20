@@ -1,42 +1,45 @@
 <?= $this->extend('admin/layout') ?>
 <?= $this->section('content') ?>
 
-<h1>Pesan Contact</h1>
+<h1 class="h3 mb-4 text-gray-800">Contact Messages</h1>
 
-<?php if (session()->getFlashdata('success')): ?>
-    <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-<?php endif; ?>
-
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Nama</th>
-            <th>Email</th>
-            <th>Pesan</th>
-            <th>Tanggal</th>
-            <th>Aksi</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php if (!empty($contacts)): ?>
-            <?php foreach ($contacts as $key => $c): ?>
-                <tr>
-                    <td><?= $key + 1 ?></td>
-                    <td><?= esc($c['name']) ?></td>
-                    <td><?= esc($c['email']) ?></td>
-                    <td><?= esc($c['message']) ?></td>
-                    <td><?= $c['created_at'] ?></td>
-                    <td>
-                        <a href="/admin/contact/delete/<?= $c['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Hapus pesan ini?')">Hapus</a>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <tr><td colspan="6" class="text-center">Belum ada pesan.</td></tr>
-        <?php endif; ?>
-    </tbody>
-</table>
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Message</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (!empty($contacts)): ?>
+                        <?php foreach($contacts as $contact): ?>
+                            <tr>
+                                <td><?= $contact['id'] ?></td>
+                                <td><?= esc($contact['name']) ?></td>
+                                <td><?= esc($contact['email']) ?></td>
+                                <td><?= esc($contact['message']) ?></td>
+                                <td>
+                                    <a href="/admin/contact/delete/<?= $contact['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Delete this message?')">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="5" class="text-center">No messages found.</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 <?= $this->endSection() ?>
-            

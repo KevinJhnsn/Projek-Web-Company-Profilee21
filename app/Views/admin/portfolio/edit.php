@@ -1,26 +1,36 @@
 <?= $this->extend('admin/layout') ?>
 <?= $this->section('content') ?>
-<h1>Edit Portfolio</h1>
-<form action="/admin/portfolio/update/<?= $portfolio['id'] ?>" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="old_image" value="<?= $portfolio['image'] ?>">
-    <div class="mb-3">
-        <label class="form-label">Title</label>
-        <input type="text" class="form-control" name="title" value="<?= $portfolio['title'] ?>" required>
+
+<h1 class="h3 mb-4 text-gray-800">Edit Portfolio</h1>
+
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <form action="/admin/portfolio/update/<?= $item['id'] ?>" method="post" enctype="multipart/form-data">
+            <?= csrf_field() ?>
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" class="form-control" name="title" value="<?= esc($item['title']) ?>" required>
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea class="form-control" name="description" rows="4" required><?= esc($item['description']) ?></textarea>
+            </div>
+            <div class="form-group">
+                <label>Current Image</label><br>
+                <?php if (!empty($item['image'])): ?>
+                    <img src="/uploads/portfolio/<?= esc($item['image']) ?>" width="100" alt="">
+                <?php else: ?>
+                    <span class="text-muted">No image uploaded</span>
+                <?php endif; ?>
+            </div>
+            <div class="form-group">
+                <label>Change Image (optional)</label>
+                <input type="file" class="form-control-file" name="image">
+            </div>
+            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Update</button>
+            <a href="/admin/portfolio" class="btn btn-secondary">Cancel</a>
+        </form>
     </div>
-    <div class="mb-3">
-        <label class="form-label">Description</label>
-        <textarea class="form-control" name="description" rows="4" required><?= $portfolio['description'] ?></textarea>
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Current Image</label><br>
-        <?php if ($portfolio['image']): ?>
-            <img src="/uploads/portfolio/<?= $portfolio['image'] ?>" width="120">
-        <?php endif; ?>
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Replace Image</label>
-        <input type="file" class="form-control" name="image">
-    </div>
-    <button type="submit" class="btn btn-primary">Update</button>
-</form>
+</div>
+
 <?= $this->endSection() ?>
