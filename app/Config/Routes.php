@@ -28,4 +28,12 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function($rout
     $routes->get('products/edit/(:num)', 'Product::edit/$1');
     $routes->post('products/update/(:num)', 'Product::update/$1');
     $routes->get('products/delete/(:num)', 'Product::delete/$1');
+
+    // Portfolio
+    $routes->get('portfolio', 'Portfolio::index');
+    $routes->get('portfolio/create', 'Portfolio::create');
+    $routes->post('portfolio/store', 'Portfolio::store');
+    $routes->get('portfolio/edit/(:num)', 'Portfolio::edit/$1');
+    $routes->post('portfolio/update/(:num)', 'Portfolio::update/$1');
+    $routes->get('portfolio/delete/(:num)', 'Portfolio::delete/$1');
 });
