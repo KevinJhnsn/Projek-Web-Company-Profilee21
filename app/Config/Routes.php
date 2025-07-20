@@ -13,8 +13,8 @@ $routes->get('/services', 'Home::services');
 $routes->get('/products', 'Home::products');
 $routes->get('/portfolio', 'Home::portfolio');
 $routes->get('/testimonials', 'Home::testimonials');
-$routes->get('/contact', 'Contact::index');
-$routes->post('/contact/send', 'Contact::send');
+$routes->get('/contact', 'Home::contact');
+$routes->post('/contact/send', 'Home::sendContact');
 
 // ========== ADMIN ==========
 $routes->get('/admin', 'Admin::index');
