@@ -13,10 +13,19 @@ $routes->get('/admin/logout', 'Admin::logout');
 $routes->post('/admin/authenticate', 'Admin::authenticate');
 
 $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function($routes) {
+    // Services
     $routes->get('services', 'Service::index');
     $routes->get('services/create', 'Service::create');
     $routes->post('services/store', 'Service::store');
     $routes->get('services/edit/(:num)', 'Service::edit/$1');
     $routes->post('services/update/(:num)', 'Service::update/$1');
     $routes->get('services/delete/(:num)', 'Service::delete/$1');
+
+    // Products
+    $routes->get('products', 'Product::index');
+    $routes->get('products/create', 'Product::create');
+    $routes->post('products/store', 'Product::store');
+    $routes->get('products/edit/(:num)', 'Product::edit/$1');
+    $routes->post('products/update/(:num)', 'Product::update/$1');
+    $routes->get('products/delete/(:num)', 'Product::delete/$1');
 });
