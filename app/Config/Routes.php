@@ -36,4 +36,12 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function($rout
     $routes->get('portfolio/edit/(:num)', 'Portfolio::edit/$1');
     $routes->post('portfolio/update/(:num)', 'Portfolio::update/$1');
     $routes->get('portfolio/delete/(:num)', 'Portfolio::delete/$1');
+
+    // Testimonials
+    $routes->get('testimonials', 'Testimonial::index');
+    $routes->get('testimonials/create', 'Testimonial::create');
+    $routes->post('testimonials/store', 'Testimonial::store');
+    $routes->get('testimonials/edit/(:num)', 'Testimonial::edit/$1');
+    $routes->post('testimonials/update/(:num)', 'Testimonial::update/$1');
+    $routes->get('testimonials/delete/(:num)', 'Testimonial::delete/$1');
 });
