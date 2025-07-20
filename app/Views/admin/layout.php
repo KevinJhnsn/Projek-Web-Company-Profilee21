@@ -21,7 +21,8 @@
                     <li class="nav-item"><a class="nav-link" href="<?= base_url('admin/products') ?>">Products</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?= base_url('admin/portfolio') ?>">Portfolio</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?= base_url('admin/testimonials') ?>">Testimonials</a></li>
-                    </ul>
+                    <li class="nav-item"><a class="nav-link" href="<?= base_url('admin/contact') ?>">Contact Messages</a></li>
+                </ul>
                 <ul class="navbar-nav ms-auto">
                     <?php if (session()->has('adminUsername')): ?>
                         <li class="nav-item"><span class="nav-link">Hi, <?= session()->get('adminUsername') ?></span></li>

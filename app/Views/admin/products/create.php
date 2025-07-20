@@ -2,6 +2,7 @@
 <?= $this->section('content') ?>
 <h1>Add Product</h1>
 <form action="/admin/products/store" method="post">
+    <?= csrf_field() ?>
     <div class="mb-3">
         <label class="form-label">Name</label>
         <input type="text" class="form-control" name="name" required>

@@ -2,15 +2,80 @@
 
 namespace App\Controllers;
 
+use App\Models\ServiceModel;
+use App\Models\ProductModel;
+use App\Models\PortfolioModel;
+use App\Models\TestimonialModel;
+use App\Models\ContactModel;
+
 class Home extends BaseController
 {
-    public function index(): string
+    public function index()
     {
-        return view('frontend/home');
+        $serviceModel = new ServiceModel();
+        $productModel = new ProductModel();
+        $portfolioModel = new PortfolioModel();
+        $testimonialModel = new TestimonialModel();
+
+        $data = [
+            'services' => $serviceModel->findAll(),
+            'products' => $productModel->findAll(),
+            'portfolio' => $portfolioModel->findAll(),
+            'testimonials' => $testimonialModel->findAll()
+        ];
+
+        return view('frontend/home', $data);
     }
 
-    public function about(): string
+    public function about()
     {
         return view('frontend/about');
+    }
+
+    public function services()
+    {
+        $serviceModel = new ServiceModel();
+        $data['services'] = $serviceModel->findAll();
+        return view('frontend/services', $data);
+    }
+
+    public function portfolio()
+    {
+        $portfolioModel = new PortfolioModel();
+        $data['portfolio'] = $portfolioModel->findAll();
+        return view('frontend/portfolio', $data);
+    }
+
+    public function products()
+    {
+        $productModel = new ProductModel();
+        $data['products'] = $productModel->findAll();
+        return view('frontend/products', $data);
+    }
+
+    public function testimonials()
+    {
+        $testimonialModel = new TestimonialModel();
+        $data['testimonials'] = $testimonialModel->findAll();
+        return view('frontend/testimonials', $data);
+    }
+
+    // Tambahan untuk Contact
+    public function contact()
+    {
+        return view('frontend/contact');
+    }
+
+    public function sendContact()
+    {
+        $contactModel = new ContactModel();
+        $contactModel->insert([
+            'name' => $this->request->getPost('name'),
+            'email' => $this->request->getPost('email'),
+            'message' => $this->request->getPost('message'),
+            'created_at' => date('Y-m-d H:i:s')
+        ]);
+
+        return redirect()->to(base_url('contact'))->with('success', 'Pesan Anda berhasil dikirim!');
     }
 }

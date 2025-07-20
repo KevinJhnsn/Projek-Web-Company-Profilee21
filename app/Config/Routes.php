@@ -5,8 +5,18 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
+
+// ========== FRONTEND ==========
 $routes->get('/', 'Home::index');
 $routes->get('/about', 'Home::about');
+$routes->get('/services', 'Home::services');
+$routes->get('/products', 'Home::products');
+$routes->get('/portfolio', 'Home::portfolio');
+$routes->get('/testimonials', 'Home::testimonials');
+$routes->get('/contact', 'Contact::index');
+$routes->post('/contact/send', 'Contact::send');
+
+// ========== ADMIN ==========
 $routes->get('/admin', 'Admin::index');
 $routes->get('/admin/login', 'Admin::login');
 $routes->get('/admin/logout', 'Admin::logout');
@@ -44,4 +54,8 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function($rout
     $routes->get('testimonials/edit/(:num)', 'Testimonial::edit/$1');
     $routes->post('testimonials/update/(:num)', 'Testimonial::update/$1');
     $routes->get('testimonials/delete/(:num)', 'Testimonial::delete/$1');
+
+    // Contact (Admin Panel)
+    $routes->get('contact', 'Contact::index');
+    $routes->get('contact/delete/(:num)', 'Contact::delete/$1');
 });

@@ -2,6 +2,7 @@
 <?= $this->section('content') ?>
 <h1>Edit Product</h1>
 <form action="/admin/products/update/<?= $product['id'] ?>" method="post">
+    <?= csrf_field() ?>
     <div class="mb-3">
         <label class="form-label">Name</label>
         <input type="text" class="form-control" name="name" value="<?= $product['name'] ?>" required>

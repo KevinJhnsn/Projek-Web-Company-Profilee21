@@ -56,4 +56,7 @@ $paths = new Paths();
 // LOAD THE FRAMEWORK BOOTSTRAP FILE
 require $paths->systemDirectory . '/Boot.php';
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 exit(Boot::bootWeb($paths));

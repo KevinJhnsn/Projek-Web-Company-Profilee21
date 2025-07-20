@@ -22,11 +22,13 @@ class Product extends BaseController
     public function store()
     {
         $productModel = new ProductModel();
+
         $productModel->save([
-            'name' => $this->request->getPost('name'),
+            'name'        => $this->request->getPost('name'),
             'description' => $this->request->getPost('description'),
-            'price' => $this->request->getPost('price')
+            'price'       => $this->request->getPost('price')
         ]);
+
         return redirect()->to('/admin/products')->with('success', 'Product created successfully.');
     }
 
@@ -41,10 +43,11 @@ class Product extends BaseController
     {
         $productModel = new ProductModel();
         $productModel->update($id, [
-            'name' => $this->request->getPost('name'),
+            'name'        => $this->request->getPost('name'),
             'description' => $this->request->getPost('description'),
-            'price' => $this->request->getPost('price')
+            'price'       => $this->request->getPost('price')
         ]);
+
         return redirect()->to('/admin/products')->with('success', 'Product updated successfully.');
     }
 
