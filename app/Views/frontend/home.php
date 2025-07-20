@@ -1,95 +1,98 @@
-<?= $this->extend('frontend/layout') ?>
-<?= $this->section('content') ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
 
-<h1>Welcome to Our Company</h1>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="<?= base_url('/') ?>">CompanyName</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="<?= base_url('/') ?>">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= base_url('about') ?>">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= base_url('services') ?>">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= base_url('products') ?>">Products</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= base_url('portfolio') ?>">Portfolio</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= base_url('contact') ?>">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-<!-- Services Section -->
-<h2>Our Services</h2>
-<div class="row">
-    <?php if (!empty($services)): ?>
-        <?php foreach ($services as $service): ?>
-            <div class="col-md-4 mb-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h4><?= esc($service['title'] ?? 'Untitled') ?></h4>
-                        <p><?= esc($service['description'] ?? '-') ?></p>
+<!-- Hero Section -->
+<header class="bg-primary text-white text-center py-5">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Welcome to Our Company</h1>
+        <p class="lead">We provide top-notch services and products for your business growth</p>
+        <a href="#services" class="btn btn-light btn-lg mt-3">Explore Services</a>
+    </div>
+</header>
+
+<!-- About Us -->
+<section class="py-5">
+    <div class="container text-center">
+        <h2>About Us</h2>
+        <p class="text-muted">We are a digital agency specializing in web development, product innovation, and creative solutions for modern businesses.</p>
+    </div>
+</section>
+
+<!-- Services -->
+<section class="py-5 bg-light" id="services">
+    <div class="container text-center">
+        <h2 class="mb-4">Our Services</h2>
+        <div class="row">
+            <?php foreach ($services as $service): ?>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <i class="fas fa-cogs fa-2x text-primary mb-3"></i>
+                            <h5 class="card-title"><?= esc($service['title']) ?></h5>
+                            <p class="card-text"><?= esc($service['description']) ?></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        <?php endforeach; ?>
-    <?php else: ?>
-        <p>No services available.</p>
-    <?php endif; ?>
-</div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
 
-<!-- Products Section -->
-<h2>Our Products</h2>
-<div class="row">
-    <?php if (!empty($products)): ?>
-        <?php foreach ($products as $product): ?>
-            <div class="col-md-4 mb-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h4>
-                            <?= esc($product['name'] ?? 'Unnamed') ?> 
-                            - Rp<?= number_format($product['price'] ?? 0, 0, ',', '.') ?>
-                        </h4>
-                        <p><?= esc($product['description'] ?? '-') ?></p>
+<!-- Products -->
+<section class="py-5" id="products">
+    <div class="container text-center">
+        <h2 class="mb-4">Our Products</h2>
+        <div class="row">
+            <?php foreach ($products as $product): ?>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <?php if (!empty($product['image'])): ?>
+                            <img src="<?= base_url('uploads/products/' . $product['image']) ?>" class="card-img-top" alt="<?= esc($product['name']) ?>">
+                        <?php endif; ?>
+                        <div class="card-body">
+                            <h5 class="card-title"><?= esc($product['name']) ?></h5>
+                            <p class="card-text"><?= esc($product['description']) ?></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        <?php endforeach; ?>
-    <?php else: ?>
-        <p>No products available.</p>
-    <?php endif; ?>
-</div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
 
-<!-- Portfolio Section -->
-<h2>Portfolio</h2>
-<div class="row">
-    <?php if (!empty($portfolio)): ?>
-        <?php foreach ($portfolio as $item): ?>
-            <div class="col-md-4 mb-3">
-                <div class="card">
-                    <?php if (!empty($item['image'])): ?>
-                        <img src="/uploads/portfolio/<?= esc($item['image']) ?>" class="card-img-top" alt="<?= esc($item['title']) ?>">
-                    <?php endif; ?>
-                    <div class="card-body">
-                        <h4><?= esc($item['title'] ?? 'No Title') ?></h4>
-                        <p><?= esc($item['description'] ?? '-') ?></p>
-                    </div>
-                </div>
-            </div>
-        <?php endforeach; ?>
-    <?php else: ?>
-        <p>No portfolio items available.</p>
-    <?php endif; ?>
-</div>
+<!-- Footer -->
+<footer class="bg-primary text-white text-center py-3">
+    <p>&copy; <?= date('Y') ?> CompanyName. All Rights Reserved.</p>
+</footer>
 
-<!-- Testimonials Section -->
-<h2>Testimonials</h2>
-<div class="row">
-    <?php if (!empty($testimonials)): ?>
-        <?php foreach ($testimonials as $t): ?>
-            <div class="col-md-4 mb-3">
-                <div class="card">
-                    <?php if (!empty($t['image'])): ?>
-                        <img src="/uploads/testimonials/<?= esc($t['image']) ?>" 
-                             class="card-img-top rounded-circle" 
-                             alt="<?= esc($t['name']) ?>" 
-                             style="width:120px; height:120px; margin:auto; margin-top:10px;">
-                    <?php endif; ?>
-                    <div class="card-body text-center">
-                        <p>"<?= esc($t['message'] ?? '-') ?>"</p>
-                        <h5><?= esc($t['name'] ?? 'Anonymous') ?></h5>
-                        <small><?= esc($t['position'] ?? '-') ?></small>
-                    </div>
-                </div>
-            </div>
-        <?php endforeach; ?>
-    <?php else: ?>
-        <p>No testimonials available.</p>
-    <?php endif; ?>
-</div>
-
-<?= $this->endSection() ?>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
