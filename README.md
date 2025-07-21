@@ -1,35 +1,46 @@
-Pemrograman Web – Company Profile WillPerfect Studio adalah proyek tugas UAS mata kuliah Pemrograman Web berupa website Company Profile yang dikembangkan menggunakan CodeIgniter 4 yang memiliki Admin Panel untuk mengelola konten (services, products, portfolio, testimonials, dan kontak), serta menggunakan template HTML5 Onova dari ThemeForest/Envato Elements untuk tampilan frontend.
+# 🌐 WillPerfect Studio – Company Profile Website
 
-📌 Deskripsi Proyek
-Website ini menampilkan profil perusahaan secara profesional, dengan fitur:
-- Frontend (Client-side) — Halaman home, about, services, products, portfolio, testimonials, dan contact form.
-- Admin Panel — CRUD data untuk services, products, portfolio, testimonials, dan manajemen pesan kontak.
+Website Company Profile ini merupakan proyek tugas UAS dari mata kuliah *Pemrograman Web*, dikembangkan menggunakan **CodeIgniter 4**. Proyek ini memiliki fitur Admin Panel untuk mengelola konten seperti **services**, **products**, **portfolio**, **testimonials**, dan **contact form**. Tampilan frontend menggunakan template HTML5 **Onova** dari ThemeForest / Envato Elements.
 
-🚀 Teknologi Digunakan
-- CodeIgniter 4
-- Bootstrap 5
-- Template HTML5: Onova dari ThemeForest/Envato Elements
-- PHP 8.2+, Composer
+---
 
-⚡ Clone & Setup
+## 📌 Fitur Utama
 
-- git clone https://github.com/willyrafaelfs/Tugas-UAS-Pemrograman-Web-Company-Profile.git
-  cd company-profile
+### 🔹 Frontend
+- Halaman: Home, About, Services, Products, Portfolio, Testimonials, Contact
+- Desain profesional dan responsif
+
+### 🔹 Admin Panel
+- CRUD untuk: Services, Products, Portfolio, Testimonials
+- Manajemen pesan dari contact form
+
+---
+
+## 🚀 Teknologi Digunakan
+
+- CodeIgniter 4  
+- Bootstrap 5  
+- PHP 8.2+  
+- Composer  
+- HTML5 Template: Onova (ThemeForest)
+
+---
+
+## ⚙️ Clone & Setup
+
+```bash
+git clone https://github.com/willyrafaelfs/Tugas-UAS-Pemrograman-Web-Company-Profile.git
+cd company-profile
 
 # Install dependencies
 composer install
 
-# Copy environment file
+# Copy file .env
 cp env .env
 
-# Atur .env untuk koneksi database
-# Lalu jalankan migrasi jika ada (optional)
+# Konfigurasi database di file .env
+# Jalankan migrasi jika diperlukan
 php spark migrate
 
 # Jalankan server lokal
 php spark serve
-
-# Login Admin Panel (Filament)
-http://localhost:8080/admin/login
-Username: admin  
-Password: admin123
