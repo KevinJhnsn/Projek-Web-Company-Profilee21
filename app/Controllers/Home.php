@@ -67,15 +67,18 @@ class Home extends BaseController
     }
 
     public function sendContact()
-    {
-        $contactModel = new ContactModel();
-        $contactModel->insert([
-            'name' => $this->request->getPost('name'),
-            'email' => $this->request->getPost('email'),
-            'message' => $this->request->getPost('message'),
-            'created_at' => date('Y-m-d H:i:s')
-        ]);
+{
+    $contactModel = new ContactModel();
+    $contactModel->insert([
+        'name'       => $this->request->getPost('name'),
+        'email'      => $this->request->getPost('email'),
+        'subject'    => $this->request->getPost('subject'),
+        'message'    => $this->request->getPost('message'),
+        'created_at' => date('Y-m-d H:i:s')
+    ]);
 
-        return redirect()->to(base_url('contact'))->with('success', 'Pesan Anda berhasil dikirim!');
-    }
+    // Redirect balik ke halaman utama (home) dengan flash message
+    return redirect()->to(base_url('/#contact'))->with('success', 'Pesan Anda berhasil dikirim!');
+}
+
 }

@@ -1,36 +1,50 @@
 <?= $this->extend('admin/layout') ?>
 <?= $this->section('content') ?>
 
-<h1 class="h3 mb-4 text-gray-800">Edit Portfolio</h1>
+<div class="container mt-4">
+    <h1>Edit Portfolio</h1>
 
-<div class="card shadow mb-4">
-    <div class="card-body">
-        <form action="/admin/portfolio/update/<?= $item['id'] ?>" method="post" enctype="multipart/form-data">
-            <?= csrf_field() ?>
-            <div class="form-group">
-                <label>Title</label>
-                <input type="text" class="form-control" name="title" value="<?= esc($item['title']) ?>" required>
-            </div>
-            <div class="form-group">
-                <label>Description</label>
-                <textarea class="form-control" name="description" rows="4" required><?= esc($item['description']) ?></textarea>
-            </div>
-            <div class="form-group">
-                <label>Current Image</label><br>
-                <?php if (!empty($item['image'])): ?>
-                    <img src="/uploads/portfolio/<?= esc($item['image']) ?>" width="100" alt="">
-                <?php else: ?>
-                    <span class="text-muted">No image uploaded</span>
-                <?php endif; ?>
-            </div>
-            <div class="form-group">
-                <label>Change Image (optional)</label>
-                <input type="file" class="form-control-file" name="image">
-            </div>
-            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Update</button>
-            <a href="/admin/portfolio" class="btn btn-secondary">Cancel</a>
-        </form>
-    </div>
+    <!-- Tampilkan error / success -->
+    <?php if (session()->getFlashdata('error')): ?>
+        <div class="alert alert-danger">
+            <?= session()->getFlashdata('error') ?>
+        </div>
+    <?php endif; ?>
+
+    <?php if (session()->getFlashdata('success')): ?>
+        <div class="alert alert-success">
+            <?= session()->getFlashdata('success') ?>
+        </div>
+    <?php endif; ?>
+
+    <form action="<?= base_url('/admin/portfolio/update/' . $portfolio['id']) ?>" method="post" enctype="multipart/form-data">
+        <?= csrf_field() ?>
+
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" name="title" id="title" class="form-control"
+                   value="<?= esc($portfolio['title']) ?>" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="description" id="description" class="form-control" rows="4" required><?= esc($portfolio['description']) ?></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="image" class="form-label">Image</label><br>
+            <?php if (!empty($portfolio['image'])): ?>
+                <img src="<?= base_url('uploads/portfolio/' . $portfolio['image']) ?>" 
+                     alt="Portfolio Image" class="img-thumbnail mb-2" style="width: 200px; height: auto;">
+                <input type="hidden" name="old_image" value="<?= esc($portfolio['image']) ?>">
+            <?php endif; ?>
+            <input type="file" name="image" id="image" class="form-control">
+            <small class="text-muted">Upload new image only if you want to replace the old one.</small>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update Portfolio</button>
+        <a href="<?= base_url('/admin/portfolio') ?>" class="btn btn-secondary">Cancel</a>
+    </form>
 </div>
 
 <?= $this->endSection() ?>

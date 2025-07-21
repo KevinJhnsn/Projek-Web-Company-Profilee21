@@ -1,0 +1,193 @@
+/* =About Section Custom Styles
+--------------------------------- */
+.about-section {
+    position: relative;
+    background: #fafafa;
+}
+
+.section-subtitle {
+    color: #2a5ee8;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 14px;
+    display: inline-block;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.about-features {
+    margin-top: 30px;
+}
+
+.single-feature {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.single-feature:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.feature-icon {
+    font-size: 30px;
+    color: #2a5ee8;
+    margin-right: 20px;
+    line-height: 1;
+}
+
+.feature-icon i {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    background: rgba(42, 94, 232, 0.1);
+    border-radius: 50%;
+}
+
+.about-img {
+    position: relative;
+    padding-left: 30px;
+}
+
+.about-experience {
+    position: absolute;
+    left: 0;
+    bottom: 40px;
+    background: #2a5ee8;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    min-width: 150px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(42, 94, 232, 0.3);
+}
+
+.about-experience h3 {
+    font-size: 42px;
+    margin-bottom: 0;
+    line-height: 1;
+}
+
+.about-experience p {
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+.single-counter {
+    padding: 30px 15px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.single-counter h3 {
+    font-size: 42px;
+    color: #2a5ee8;
+    margin-bottom: 5px;
+}
+
+.single-counter p {
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+/* Contact Section */
+.contact-section {
+    background-color: #f9f9f9;
+}
+
+.contact-info {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.05);
+    height: 100%;
+}
+
+.single-contact-info {
+    display: flex;
+    align-items: flex-start;
+}
+
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background: rgba(42, 94, 232, 0.1);
+    color: #2a5ee8;
+    border-radius: 50%;
+    margin-right: 20px;
+    font-size: 18px;
+}
+
+.contact-content h5 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.contact-form-wrapper {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.05);
+    height: 100%;
+}
+
+.contact-form .form-control {
+    height: 50px;
+    border: 1px solid #eee;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.contact-form .form-control:focus {
+    box-shadow: none;
+    border-color: #2a5ee8;
+}
+
+.contact-form textarea.form-control {
+    height: auto;
+    resize: none;
+}
+
+.contact-form .btn {
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+@media (max-width: 991.98px) {
+    .contact-info {
+        margin-bottom: 30px;
+    }
+}
+
+.testimonials-section {
+    padding: 80px 0;
+}
+.single-testimonial {
+    background: #fff;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+.single-testimonial:hover {
+    transform: translateY(-5px);
+}
+.testimonial-text {
+    font-style: italic;
+}
+.slick-dots li button:before {
+    font-size: 12px;
+    color: #007bff;
+}
+.slick-dots li.slick-active button:before {
+    color: #0056b3;
+}

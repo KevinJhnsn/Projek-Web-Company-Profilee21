@@ -7,14 +7,8 @@ use CodeIgniter\Router\RouteCollection;
  */
 
 // ========== FRONTEND ==========
-$routes->get('/', 'Home::index');
-$routes->get('/about', 'Home::about');
-$routes->get('/services', 'Home::services');
-$routes->get('/products', 'Home::products');
-$routes->get('/portfolio', 'Home::portfolio');
-$routes->get('/testimonials', 'Home::testimonials');
-$routes->get('/contact', 'Home::contact');
-$routes->post('/contact/send', 'Home::sendContact');
+$routes->get('/', 'Home::index');  // Semua section (home, about, services, dll) ada di halaman ini
+$routes->post('/contact/send', 'Home::sendContact'); // Form contact tetap pakai POST
 
 // ========== ADMIN ==========
 $routes->get('/admin', 'Admin::index');
@@ -22,7 +16,7 @@ $routes->get('/admin/login', 'Admin::login');
 $routes->get('/admin/logout', 'Admin::logout');
 $routes->post('/admin/authenticate', 'Admin::authenticate');
 
-$routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function($routes) {
+$routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function ($routes) {
     // Services
     $routes->get('services', 'Service::index');
     $routes->get('services/create', 'Service::create');
