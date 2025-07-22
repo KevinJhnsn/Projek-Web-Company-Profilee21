@@ -32,6 +32,23 @@ Website Company Profile ini merupakan proyek tugas UAS dari mata kuliah *Pemrogr
 
 ## ⚙️ Clone & Setup
 
+```bash
+git clone https://github.com/willyrafaelfs/Tugas-UAS-Pemrograman-Web-Company-Profile.git
+cd company-profile
+
+# Install dependencies
+composer install
+
+# Copy file .env
+cp env .env
+
+# Konfigurasi database di file .env
+# Jalankan migrasi jika diperlukan
+php spark migrate
+
+# Jalankan server lokal
+php spark serve
+
 #Login Admin Panel
 URL: http://localhost:8080/admin/login
 Username: admin 
