@@ -55,7 +55,4 @@ Username: admin
 Password: admin123
 
 ```
-## 👥 Anggota Kelompok – Pemweb 4G
-- Adelio Raihan Aryasatya (23083000152)
-- Willy Rafael F. Silalahi (23083000168)
-- Imanuel Kevin Jhonson (23083000188)
+- Imanuel Kevin Jhonson (23083000188)_5C
