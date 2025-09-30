@@ -7,9 +7,8 @@
     xsi:noNamespaceSchemaLocation="vendor/vimeo/psalm/config.xsd"
 >
     <projectFiles>
-        <!-- folder utama CodeIgniter -->
+        <!-- folder utama kode kamu -->
         <directory name="app" />
-        <directory name="system" />
 
         <!-- folder yang diabaikan -->
         <ignoreFiles>
