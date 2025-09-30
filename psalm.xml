@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<psalm
+    errorLevel="3"
+    findUnusedCode="false"
+    resolveFromConfigFile="true"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="vendor/vimeo/psalm/config.xsd"
+>
+    <projectFiles>
+        <!-- folder utama CodeIgniter -->
+        <directory name="app" />
+        <directory name="system" />
+
+        <!-- folder yang diabaikan -->
+        <ignoreFiles>
+            <directory name="vendor" />
+            <directory name="writable" />
+            <directory name="public" />
+        </ignoreFiles>
+    </projectFiles>
+</psalm>
